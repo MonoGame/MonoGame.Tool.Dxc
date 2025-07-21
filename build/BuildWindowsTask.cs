@@ -37,7 +37,7 @@ public sealed class BuildWindowsTask : FrostingTask<BuildContext>
 
         // Copy artifact
         context.CreateDirectory(context.ArtifactsDir);
-        context.CopyFile($"{buildWorkingDir}/bin/dxc-3.7", $"{context.ArtifactsDir}/dxc");
+        context.CopyFile($"{buildWorkingDir}/Release/bin/dxc.exe", $"{context.ArtifactsDir}/dxc.exe");
     }
 
     private bool IsOnPATH(string process)
