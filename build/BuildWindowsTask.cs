@@ -24,7 +24,7 @@ public sealed class BuildWindowsTask : FrostingTask<BuildContext>
         context.StartProcess(cmake, new ProcessSettings
         {
             WorkingDirectory = buildWorkingDir,
-            Arguments = "-C ../dxc/cmake/caches/PredefinedParams.cmake -DCMAKE_BUILD_TYPE=Release -G \"Visual Studio 17 2022\" ../dxc/"
+            Arguments = "-C ../dxc/cmake/caches/PredefinedParams.cmake -D CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded -DCMAKE_BUILD_TYPE=Release -G \"Visual Studio 17 2022\" ../dxc/"
         });
 
         // Build
