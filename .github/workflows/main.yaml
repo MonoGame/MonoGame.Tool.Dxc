@@ -2,6 +2,9 @@ name: Build
 
 on: [push, pull_request]
 
+env:
+  USE_WARP_FROM_NUGET: LATEST_RELEASE
+
 jobs:
   build:
     name: build-${{ matrix.os }}
