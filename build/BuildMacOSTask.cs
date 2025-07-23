@@ -10,7 +10,7 @@ public sealed class BuildMacOSTask : FrostingTask<BuildContext>
     public override void Run(BuildContext context)
     {
         var buildWorkingDir = "cakebuild/";
-        /ontext.CreateDirectory(buildWorkingDir);
+        context.CreateDirectory(buildWorkingDir);
         context.StartProcess("cmake", new ProcessSettings
         {
             WorkingDirectory = buildWorkingDir,
