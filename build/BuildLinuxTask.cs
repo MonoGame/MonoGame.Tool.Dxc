@@ -18,5 +18,6 @@ public sealed class BuildLinuxTask : FrostingTask<BuildContext>
         });
         context.StartProcess("make", new ProcessSettings { WorkingDirectory = buildWorkingDir });
         context.CopyFile($"{buildWorkingDir}/bin/dxc-3.7", $"{context.ArtifactsDir}/dxc");
+        context.CopyFile($"{buildWorkingDir}/lib/libdxcompiler.so", $"{context.ArtifactsDir}/libdxcompiler.so");
     }
 }
