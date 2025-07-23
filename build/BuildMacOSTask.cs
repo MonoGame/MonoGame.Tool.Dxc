@@ -10,8 +10,7 @@ public sealed class BuildMacOSTask : FrostingTask<BuildContext>
     public override void Run(BuildContext context)
     {
         var buildWorkingDir = "cakebuild/";
-        context.CreateDirectory(buildWorkingDir);
-        context.ReplaceTextInFiles("dxc/tools/clang/tools/dxcompiler/CMakeLists.txt", "add_clang_library(dxcompiler SHARED ${SOURCES})", "add_clang_library(dxcompiler STATIC ${SOURCES})");
+        /ontext.CreateDirectory(buildWorkingDir);
         context.StartProcess("cmake", new ProcessSettings
         {
             WorkingDirectory = buildWorkingDir,
@@ -19,5 +18,6 @@ public sealed class BuildMacOSTask : FrostingTask<BuildContext>
         });
         context.StartProcess("make", new ProcessSettings { WorkingDirectory = buildWorkingDir });
         context.CopyFile($"{buildWorkingDir}/bin/dxc-3.7", $"{context.ArtifactsDir}/dxc");
+        context.CopyFile($"{buildWorkingDir}/lib/libdxcompiler.dylib", $"{context.ArtifactsDir}/libdxcompiler.dylib");
     }
 }

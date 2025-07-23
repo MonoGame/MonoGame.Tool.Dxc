@@ -11,7 +11,6 @@ public sealed class BuildLinuxTask : FrostingTask<BuildContext>
     {
         var buildWorkingDir = "cakebuild/";
         context.CreateDirectory(buildWorkingDir);
-        context.ReplaceTextInFiles("dxc/tools/clang/tools/dxcompiler/CMakeLists.txt", "add_clang_library(dxcompiler SHARED ${SOURCES})", "add_clang_library(dxcompiler STATIC ${SOURCES})");
         context.StartProcess("cmake", new ProcessSettings
         {
             WorkingDirectory = buildWorkingDir,
