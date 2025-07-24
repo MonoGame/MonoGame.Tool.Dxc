@@ -11,6 +11,8 @@ public sealed class BuildMacOSTask : FrostingTask<BuildContext>
     {
         var buildWorkingDir = "cakebuild/";
         context.CreateDirectory(buildWorkingDir);
+        context.CreateDirectory($"{context.ArtifactsDir}/bin");
+        context.CreateDirectory($"{context.ArtifactsDir}/lib");
         context.StartProcess("cmake", new ProcessSettings
         {
             WorkingDirectory = buildWorkingDir,
