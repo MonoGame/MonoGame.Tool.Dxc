@@ -17,7 +17,7 @@ public sealed class BuildMacOSTask : FrostingTask<BuildContext>
             Arguments = "-C ../dxc/cmake/caches/PredefinedParams.cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=\"x86_64;arm64\" ../dxc/"
         });
         context.StartProcess("make", new ProcessSettings { WorkingDirectory = buildWorkingDir });
-        context.CopyFile($"{buildWorkingDir}/bin/dxc-3.7", $"{context.ArtifactsDir}/dxc");
-        context.CopyFile($"{buildWorkingDir}/lib/libdxcompiler.dylib", $"{context.ArtifactsDir}/libdxcompiler.dylib");
+        context.CopyFile($"{buildWorkingDir}/bin/dxc-3.7", $"{context.ArtifactsDir}/bin/dxc");
+        context.CopyFile($"{buildWorkingDir}/lib/libdxcompiler.dylib", $"{context.ArtifactsDir}/lib/libdxcompiler.dylib");
     }
 }

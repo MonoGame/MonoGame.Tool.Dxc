@@ -17,7 +17,7 @@ public sealed class BuildLinuxTask : FrostingTask<BuildContext>
             Arguments = "-C ../dxc/cmake/caches/PredefinedParams.cmake -DCMAKE_BUILD_TYPE=Release ../dxc/"
         });
         context.StartProcess("make", new ProcessSettings { WorkingDirectory = buildWorkingDir });
-        context.CopyFile($"{buildWorkingDir}/bin/dxc-3.7", $"{context.ArtifactsDir}/dxc");
-        context.CopyFile($"{buildWorkingDir}/lib/libdxcompiler.so", $"{context.ArtifactsDir}/libdxcompiler.so");
+        context.CopyFile($"{buildWorkingDir}/bin/dxc-3.7", $"{context.ArtifactsDir}/bib/dxc");
+        context.CopyFile($"{buildWorkingDir}/lib/libdxcompiler.so", $"{context.ArtifactsDir}/lib/libdxcompiler.so");
     }
 }
