@@ -18,7 +18,7 @@ public sealed class BuildWindowsTask : FrostingTask<BuildContext>
         context.DownloadFile(downloadUrl, "cakebuild/dxc.zip");
         ZipFile.ExtractToDirectory("cakebuild/dxc.zip", $"cakebuild/");
         context.CreateDirectory($"{context.ArtifactsDir}/bin/");
-        context.CopyFiles($"cakebuild/bin/x64/dxc.exe", $"{context.ArtifactsDir}/bin/dxc.exe");
-        context.CopyFiles($"cakebuild/bin/x64/dxcompiler.dll", $"{context.ArtifactsDir}/bin/dxcompiler.dll");
+        context.CopyFile($"cakebuild/bin/x64/dxc.exe", $"{context.ArtifactsDir}/bin/dxc.exe");
+        context.CopyFile($"cakebuild/bin/x64/dxcompiler.dll", $"{context.ArtifactsDir}/bin/dxcompiler.dll");
     }
 }
