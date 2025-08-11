@@ -20,5 +20,8 @@ public sealed class BuildWindowsTask : FrostingTask<BuildContext>
         context.CreateDirectory($"{context.ArtifactsDir}/bin/");
         context.CopyFile($"cakebuild/bin/x64/dxc.exe", $"{context.ArtifactsDir}/bin/dxc.exe");
         context.CopyFile($"cakebuild/bin/x64/dxcompiler.dll", $"{context.ArtifactsDir}/bin/dxcompiler.dll");
+        context.CopyFile($"cakebuild/LICENSE-LLVM.txt", $"{context.ArtifactsDir}/bin/LICENSE-LLVM.txt");
+        context.CopyFile($"cakebuild/LICENSE-MIT.txt", $"{context.ArtifactsDir}/bin/LICENSE-MIT.txt");
+        context.CopyFile($"cakebuild/LICENSE-MS.txt", $"{context.ArtifactsDir}/bin/LICENSE-MS.txt");
     }
 }
