@@ -13,12 +13,12 @@ public sealed class BuildLinuxTask : FrostingTask<BuildContext>
         context.CreateDirectory(buildWorkingDir);
         context.CreateDirectory($"{context.ArtifactsDir}/bin");
         context.CreateDirectory($"{context.ArtifactsDir}/lib");
-        context.StartProcess("cmake", new ProcessSettings
+        context.StartProcessWithDocker("cmake", new ProcessSettings
         {
             WorkingDirectory = buildWorkingDir,
             Arguments = "-C ../dxc/cmake/caches/PredefinedParams.cmake -DCMAKE_BUILD_TYPE=Release ../dxc/"
         });
-        context.StartProcess("make", new ProcessSettings { WorkingDirectory = buildWorkingDir });
+        context.StartProcessWithDocker("make", new ProcessSettings { WorkingDirectory = buildWorkingDir });
         context.CopyFile($"{buildWorkingDir}/bin/dxc-3.7", $"{context.ArtifactsDir}/bin/dxc");
         context.CopyFile($"{buildWorkingDir}/lib/libdxcompiler.so", $"{context.ArtifactsDir}/lib/libdxcompiler.so");
     }
