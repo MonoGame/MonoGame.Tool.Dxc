@@ -14,7 +14,7 @@ public sealed class BuildWindowsTask : FrostingTask<BuildContext>
     {
         context.ShouldSkipTest = true;
         context.CreateDirectory("cakebuild");
-        var downloadUrl = "https://github.com/microsoft/DirectXShaderCompiler/releases/download/v1.8.2505.1/dxc_2025_07_14.zip";
+        var downloadUrl = "https://github.com/microsoft/DirectXShaderCompiler/releases/download/v1.9.2607/dxc_2026_07_29.zip";
         context.DownloadFile(downloadUrl, "cakebuild/dxc.zip");
         ZipFile.ExtractToDirectory("cakebuild/dxc.zip", $"cakebuild/");
         
