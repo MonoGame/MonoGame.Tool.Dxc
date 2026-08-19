@@ -19,7 +19,15 @@ public sealed class BuildLinuxTask : FrostingTask<BuildContext>
             Arguments = "-C ../dxc/cmake/caches/PredefinedParams.cmake -DCMAKE_BUILD_TYPE=Release ../dxc/"
         });
         context.StartProcessWithDocker("make", new ProcessSettings { WorkingDirectory = buildWorkingDir, Arguments = "" });
-        context.CopyFile($"{buildWorkingDir}/bin/dxc-3.7", $"{context.ArtifactsDir}/bin/dxc");
-        context.CopyFile($"{buildWorkingDir}/lib/libdxcompiler.so", $"{context.ArtifactsDir}/lib/libdxcompiler.so");
+        var dxcArtifact = $"{context.ArtifactsDir}/bin/dxc";
+        var dxcompilerArtifact = $"{context.ArtifactsDir}/lib/libdxcompiler.so";
+        context.CopyFile($"{buildWorkingDir}/bin/dxc-3.7", dxcArtifact);
+        context.CopyFile($"{buildWorkingDir}/lib/libdxcompiler.so", dxcompilerArtifact);
+
+        var stripArguments = new ProcessArgumentBuilder();
+        stripArguments.Append("--strip-unneeded");
+        stripArguments.AppendQuoted(dxcArtifact);
+        stripArguments.AppendQuoted(dxcompilerArtifact);
+        context.StartProcessWithDocker("strip", new ProcessSettings { WorkingDirectory = "", Arguments = stripArguments });
     }
 }
