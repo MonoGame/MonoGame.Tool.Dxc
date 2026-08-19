@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest, ubuntu-22.04-arm, macos-latest]
+        os: [windows-2022, ubuntu-latest, ubuntu-22.04-arm, macos-latest]
       fail-fast: false
     steps:
       - name: Expose GitHub Runtime
@@ -20,11 +20,11 @@ jobs:
       - name: Install Mac Dependencies
         if: runner.os == 'macOS'
         run: |
-          brew install cmake autoconf automake libtool
+          brew install cmake autoconf automake libtool pkg-config
 
       - name: Install Linux Dependencies
         if: runner.os == 'Linux'
-        run: sudo apt-get install cmake autoconf automake libtool
+        run: sudo apt-get install cmake autoconf automake libtool pkg-config
 
       - name: Clone repository
         uses: actions/checkout@v4
